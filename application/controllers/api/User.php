@@ -39,8 +39,8 @@ class User extends REST_Controller {
 
     public function user_register_get()
     {
-        $postData='{"name":"dipanshu","password":"pwd","mobile":"9560020152"}';
-        // $postData = file_get_contents("php://input");
+        // $postData='{"name":"dipanshu","password":"pwd","mobile":"9560020152"}';
+        $postData = file_get_contents("php://input");
         $postArray=json_decode($postData,true); 
         if($postArray['mobile']!='' && $postArray['name']!='' && $postArray['password']!='')
         {
@@ -72,8 +72,8 @@ class User extends REST_Controller {
 
     public function verify_otp_get()
     {
-        $postData='{"otp":"735","mobile":"9560020152"}';
-        // $postData = file_get_contents("php://input");
+        // $postData='{"otp":"7352","mobile":"9560020152"}';
+        $postData = file_get_contents("php://input");
         $postArray=json_decode($postData,true); 
         if($postArray['otp']!='' && $postArray['mobile']!='')
         {
@@ -98,8 +98,8 @@ class User extends REST_Controller {
 
     public function login_get()
     {
-        $postData='{"mobile":"9560020152","password":"pwd"}';
-        // $postData = file_get_contents("php://input");
+        // $postData='{"mobile":"9560020152","password":"pwd"}';
+        $postData = file_get_contents("php://input");
         $postArray=json_decode($postData,true); 
 
         if($postArray['mobile']!='' && $postArray['password']!='')
@@ -125,8 +125,8 @@ class User extends REST_Controller {
 
     public function add_product_get()
     {
-        $postData='{"product_type":"property","packege_type":"abc","packege_weight":"abc","quantity":"1","degree_or_quality":"qty","source":"src","location":"india"}';
-        // $postData = file_get_contents("php://input");
+        // $postData='{"product_type":"property","packege_type":"abc","packege_weight":"abc","quantity":"1","degree_or_quality":"qty","source":"src","location":"india"}';
+        $postData = file_get_contents("php://input");
         $postArray=json_decode($postData,true); 
         
         if($postArray['product_type']!='')
