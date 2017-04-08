@@ -221,6 +221,25 @@ class User extends REST_Controller {
     }
 
 
+    function all_products_get()
+    {
+        if(!empty($this->usersapi->all_products()))
+        {
+            $response['response']['status']='Ok';
+            $response['response']['data']=$this->usersapi->all_products();
+            echo json_encode($response);
+            exit();    
+        }
+        else
+        {
+            $response['response']['status']='Error';
+            $response['response']['message']='Somthing went wrong, Try again';
+            echo json_encode($response);
+            exit();   
+        } 
+    }
+
+
     public function users_get()
     {
         // Users from a data store e.g. database

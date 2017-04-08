@@ -115,4 +115,14 @@ class Usersapi extends CI_Model
 		return $this->db->insert_id();
 	}
 
+	function all_products()
+	{
+		$this->db->where('status','t');
+		$q=$this->db->get('tbl_products');
+		if($q->num_rows()>0)
+		{
+			return $q->result_array();
+		}
+	}
+
 }
