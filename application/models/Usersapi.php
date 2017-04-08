@@ -109,4 +109,10 @@ class Usersapi extends CI_Model
 		}
 	}
 
+	function add_product($data)
+	{
+		$this->db->insert('tbl_products',$data);
+		return $this->db->insert_id();
+	}
+
 }

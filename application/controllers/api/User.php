@@ -123,6 +123,103 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
+    public function add_product_get()
+    {
+        $postData='{"product_type":"property","packege_type":"abc","packege_weight":"abc","quantity":"1","degree_or_quality":"qty","source":"src","location":"india"}';
+        // $postData = file_get_contents("php://input");
+        $postArray=json_decode($postData,true); 
+        
+        if($postArray['product_type']!='')
+        {
+            
+            $data=array('product_type'=>$postArray['product_type'],'packege_type'=>$postArray['packege_type'],'packege_weight'=>$postArray['packege_weight'],'quantity'=>$postArray['quantity'],'degree_or_quality'=>$postArray['degree_or_quality'],'source'=>$postArray['source'],'location'=>$postArray['location'],'added_on'=>date('Y-m-d h:i:s'),'status'=>'f');
+            $added=$this->usersapi->add_product($data);
+            if($added)
+            {
+                $response['response']['status']='Ok';
+                $response['response']['product_id']=$added;
+                $response['response']['message']='Product Added successfully';
+            }
+            else
+            {
+                $response['response']['status']='Error';
+                $response['response']['message']='Somthing went wrong! Please try again.';
+            }
+        }
+        else
+        {
+            $response['response']['status']='Error';
+            $response['response']['message']='invalid data';
+        }
+        echo json_encode($response);
+    }
+
+    public function upload_images_post()
+    {
+        //$_POST['product_id']=2;
+        
+        //$_FILES['file']['name']="nameNEw";
+        
+        //$postData = file_get_contents("php://input");
+        //$postData='{"multupleImage":{"rest_id":"","user_id"=>"2","image_name"=>"asdfasd"}}';
+        //$postArray=json_decode($postData,true);  
+        if($_POST['product_id']=='')
+        {
+            $errorArray = array("status"=>"False","error"=>"Invalid Parameter Request");
+            header('Content-type:application/json');
+            $error = json_encode($errorArray);
+            echo $error;
+            exit();
+        }
+        else
+        {
+            
+            if($_FILES['file']['name']=='')
+            {
+                $errorArray = array("status"=>"False","error"=>"Invalid Parameter Request");
+                header('Content-type:application/json');
+                $error = json_encode($errorArray);
+                echo $error;
+                exit();
+            }
+            else
+            {
+                $this->load->helper('url');
+                $target_path = "/var/www/html/olxtype/public/";
+                $user_file = time() . basename($_FILES['file']['name']);
+                $target_path = $target_path .  $user_file;
+
+                if(move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) 
+                {
+                    $data=array('product_id'=>$_POST['product_id'],'image'=>$user_file);
+                    // $data['name']=$user_file;
+                    
+                    $insertedId=$this->db->insert("tbl_image", $data); 
+                    $ReturnData['response']['status']="ok";
+                    $ReturnData['response']['message']="Image uploaded";
+                    // $ReturnData['restImg']=$this->apimodel->getRestImg($_POST['rest_id']);  
+                        
+                         
+                    $return = json_encode($ReturnData);
+                    echo $return;
+                    exit();
+                 
+                } 
+                else
+                {
+                    $ReturnData['response']['status']="error";
+                    $ReturnData['response']['message']="Image not uploaded, Try again";
+                    // $ReturnData['restImg']=$this->apimodel->getRestImg($_POST['rest_id']);  
+                        
+                         
+                    $return = json_encode($ReturnData);
+                    echo $return;
+                    exit();   
+                }
+            }
+        }
+    }
+
 
     public function users_get()
     {
