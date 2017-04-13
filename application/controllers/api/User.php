@@ -177,71 +177,7 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
-    public function upload_images_post()
-    {
-        //$_POST['product_id']=2;
-        
-        //$_FILES['file']['name']="nameNEw";
-        
-        //$postData = file_get_contents("php://input");
-        //$postData='{"multupleImage":{"rest_id":"","user_id"=>"2","image_name"=>"asdfasd"}}';
-        //$postArray=json_decode($postData,true);  
-        if($_POST['product_id']=='')
-        {
-            $errorArray = array("status"=>"False","error"=>"Invalid Parameter Request");
-            header('Content-type:application/json');
-            $error = json_encode($errorArray);
-            echo $error;
-            exit();
-        }
-        else
-        {
-            
-            if($_FILES['file']['name']=='')
-            {
-                $errorArray = array("status"=>"False","error"=>"Invalid Parameter Request");
-                header('Content-type:application/json');
-                $error = json_encode($errorArray);
-                echo $error;
-                exit();
-            }
-            else
-            {
-                $this->load->helper('url');
-                $target_path = "/var/www/html/olxtype/public/";
-                $user_file = time() . basename($_FILES['file']['name']);
-                $target_path = $target_path .  $user_file;
-
-                if(move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) 
-                {
-                    $data=array('product_id'=>$_POST['product_id'],'image'=>$user_file);
-                    // $data['name']=$user_file;
-                    
-                    $insertedId=$this->db->insert("tbl_image", $data); 
-                    $ReturnData['response']['status']="ok";
-                    $ReturnData['response']['message']="Image uploaded";
-                    // $ReturnData['restImg']=$this->apimodel->getRestImg($_POST['rest_id']);  
-                        
-                         
-                    $return = json_encode($ReturnData);
-                    echo $return;
-                    exit();
-                 
-                } 
-                else
-                {
-                    $ReturnData['response']['status']="error";
-                    $ReturnData['response']['message']="Image not uploaded, Try again";
-                    // $ReturnData['restImg']=$this->apimodel->getRestImg($_POST['rest_id']);  
-                        
-                         // SELECT `tbl_products`.*, `tbl_image`.* FROM `tbl_products` JOIN `tbl_image` ON `tbl_image`.`product_id`=`tbl_products`.`id` WHERE `tbl_products`.`status` = 't'
-                    $return = json_encode($ReturnData);
-                    echo $return;
-                    exit();   
-                }
-            }
-        }
-    }
+    
 
 
     function all_products_get()

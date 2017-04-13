@@ -122,7 +122,7 @@ class Usersapi extends CI_Model
 		$this->db->join('tbl_image','tbl_image.product_id=tbl_products.id');
 		$this->db->where('tbl_products.status','t');
 		$q=$this->db->get();
-		echo $this->db->last_query();die;
+		 
 		if($q->num_rows()>0)
 		{
 			return $q->result_array();
