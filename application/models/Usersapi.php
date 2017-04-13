@@ -105,7 +105,7 @@ class Usersapi extends CI_Model
 		$q=$this->db->get('tbl_user');
 		if($q->num_rows()>0)
 		{
-			return true;
+			return $q->result_array();
 		}
 	}
 
@@ -123,6 +123,34 @@ class Usersapi extends CI_Model
 		{
 			return $q->result_array();
 		}
+	}
+
+	function post_bid($data)
+	{
+		$this->db->insert('tbl_bid',$data);
+		return $this->db->insert_id();
+	}
+
+	function bid_details($product_id)
+	{
+		$q=$this->db->query("select  min(b.bid_amount)as min_amount, max(b.bid_amount)as max_amount from tbl_bid b where product_id='".$product_id."'");
+		 
+		if($q->num_rows()>0)
+		{
+			return $q->result_array();
+		}
+
+	}
+
+	function remaing($product_id)
+	{
+		$q=$this->db->query("select closed_bid from tbl_products where id='".$product_id."'");
+		 
+		if($q->num_rows()>0)
+		{
+			return $q->result_array();
+		}
+
 	}
 
 }

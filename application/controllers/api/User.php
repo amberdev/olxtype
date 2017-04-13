@@ -105,9 +105,11 @@ class User extends REST_Controller {
 
         if($postArray['mobile']!='' && $postArray['password']!='')
         {
-            if($this->usersapi->login($postArray['mobile'],$postArray['password']))
+            if($data=$this->usersapi->login($postArray['mobile'],$postArray['password']))
             {
+
                 $response['response']['status']='Ok';
+                $response['response']['user_id']=$data[0]['id'];
                 $response['response']['message']='User logged in successfully';
             }
             else
@@ -252,10 +254,62 @@ class User extends REST_Controller {
     }
 
 
-    public function product_bid_get()
+    public function fix_product_bid_post()
     {
+        // $postData='{"bid_amount":"200","product_id":"42","user_id":"5"}';
+        $postData = file_get_contents("php://input");
+        $postArray=json_decode($postData,true); 
+        if($postArray['product_id']!='' && $postArray['bid_amount']!='' && $postArray['user_id'])
+        {
+            $data=array('product_id'=>$postArray['product_id'],'bid_amount'=>$postArray['bid_amount'],'user_id'=>$postArray['user_id'],'created_on'=>date('Y-m-d h:i:s'));
 
+            if($this->usersapi->post_bid($data))
+            {
+                $response['response']['status']='ok';
+                $response['response']['message']='Your bid has been submitted';
+            }
+            else
+            {
+                $response['response']['status']='Error';
+                $response['response']['message']='Somthing Went Wrong';
+            }
+        }
+        else
+        {
+            $response['response']['status']='Error';
+            $response['response']['message']='Invalid Data';
+        }
+        echo json_encode($response);
     }
+
+    public function product_bid_details_get()
+    {
+        // $postData='{"product_id":"42"}';
+        $postData = file_get_contents("php://input");
+        $postArray=json_decode($postData,true); 
+        if($postArray['product_id']!='')
+        {
+            $data=$this->usersapi->bid_details($postArray['product_id']);
+            
+            $remaing=$this->usersapi->remaing($postArray['product_id']);
+            
+            
+            $response['response']['status']='Ok';
+            $response['response']['message']='Success';
+            $response['data']['max_bid']=$data[0]['max_amount'];
+            $response['data']['min_bid']=$data[0]['min_amount'];
+            $response['data']['remaing_time']=$remaing[0]['closed_bid'];
+
+        }
+        else
+        {
+            $response['response']['status']='Error';
+            $response['response']['message']='Invalid Data';
+        }
+        echo json_encode($response);
+    }
+
+
 
 
     public function users_get()
