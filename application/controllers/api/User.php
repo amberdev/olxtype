@@ -124,13 +124,13 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
-    public function add_product_post()
+    public function add_product_get()
     {
 
 
-        // $postData='{"product":{"title":"abcd","product_type":"property","packege_type":"abc","packege_weight":"abc","quantity":"1","current_price":"110","degree_or_quality":"qty","source":"src","location":"india"},"image":{"image1":"iVBORw0KGgoAAAANSUhEUgAAACcAAAAwCAYAAACScGMWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTA1MTQ0OEREREE2MTFFNjkyQUFDMTYxN0VBNzc5MEQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTA1MTQ0OEVEREE2MTFFNjkyQUFDMTYxN0VBNzc5MEQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBMDUxNDQ4QkREQTYxMUU2OTJBQUMxNjE3RUE3NzkwRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBMDUxNDQ4Q0REQTYxMUU2OTJBQUMxNjE3RUE3NzkwRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkUkQDQAAAGoSURBVHjaYtTSN2EgETABcTgQVwOxFhAz4lH7H4ivAXEHEC8D4n/oCq5eOI1TMwsD6cAZahExAORwbSBeDMSvgXgnqaFAKmiB0iAHskIdgAuD5OdD1TeRahEjGdH6HylUKNaDL1rJCTm6AVCaUwHiI0AsTmYIUqRH28AUm7pHQOwICjk7MhxGayAHxA6gkFsExLuA2AqIVwLxd2gRQW8AKnI4ocXUMSB+CXLcHyB+AsQvkIL+Ab1cBMsQwOiFRfkLoNiTQZ8hRh1HT8cZAnE8FnFhIM4CYhEscilAbEAPx60D4tlYxPOAeCoQZ2ORmwbVR3IhTCpQwCEuAaWlsMiB6ljF0Qwx6rhRx406btRxo44bddyo40YdN+q4UceNOm7UcaOOG+mO+8IAGbJHH9/9DqV/YNEDUv+VHj3+dCCOYsAcQgUNOYDGQ6Zj0bMBiDfRw3HLGLDPQ9wCYgcceoJH09yo47A47j2UZgdiXXo6QtvAVAdIsaG5AyVD3AHiM0AMmm+6REeHIXPPQ92BEXKgcsoLiFcgu55O4D3UXo+rF07DyksGgAADAIVoTrsd/fWSAAAAAElFTkSuQmCC","image2":"binary","image3":"binary","image4":"binary","image5":"binary"}}';
+        $postData='{"product":{"title":"abcd","product_type":"property","packege_type":"abc","packege_weight":"abc","quantity":"1","current_price":"110","degree_or_quality":"qty","source":"src","location":"india"},"image":{"image1":"iVBORw0KGgoAAAANSUhEUgAAACcAAAAwCAYAAACScGMWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTA1MTQ0OEREREE2MTFFNjkyQUFDMTYxN0VBNzc5MEQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTA1MTQ0OEVEREE2MTFFNjkyQUFDMTYxN0VBNzc5MEQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBMDUxNDQ4QkREQTYxMUU2OTJBQUMxNjE3RUE3NzkwRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBMDUxNDQ4Q0REQTYxMUU2OTJBQUMxNjE3RUE3NzkwRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkUkQDQAAAGoSURBVHjaYtTSN2EgETABcTgQVwOxFhAz4lH7H4ivAXEHEC8D4n/oCq5eOI1TMwsD6cAZahExAORwbSBeDMSvgXgnqaFAKmiB0iAHskIdgAuD5OdD1TeRahEjGdH6HylUKNaDL1rJCTm6AVCaUwHiI0AsTmYIUqRH28AUm7pHQOwICjk7MhxGayAHxA6gkFsExLuA2AqIVwLxd2gRQW8AKnI4ocXUMSB+CXLcHyB+AsQvkIL+Ab1cBMsQwOiFRfkLoNiTQZ8hRh1HT8cZAnE8FnFhIM4CYhEscilAbEAPx60D4tlYxPOAeCoQZ2ORmwbVR3IhTCpQwCEuAaWlsMiB6ljF0Qwx6rhRx406btRxo44bddyo40YdN+q4UceNOm7UcaOOG+mO+8IAGbJHH9/9DqV/YNEDUv+VHj3+dCCOYsAcQgUNOYDGQ6Zj0bMBiDfRw3HLGLDPQ9wCYgcceoJH09yo47A47j2UZgdiXXo6QtvAVAdIsaG5AyVD3AHiM0AMmm+6REeHIXPPQ92BEXKgcsoLiFcgu55O4D3UXo+rF07DyksGgAADAIVoTrsd/fWSAAAAAElFTkSuQmCC","image2":"","image3":"","image4":"","image5":""}}';
 
-        $postData = file_get_contents("php://input");
+        // $postData = file_get_contents("php://input");
 
         $postArray=json_decode($postData,true); 
         
@@ -141,27 +141,80 @@ class User extends REST_Controller {
         {
             
             $data=array('title'=>$postArray['product']['title'],'product_type'=>$postArray['product']['product_type'],'packege_type'=>$postArray['product']['packege_type'],'packege_weight'=>$postArray['product']['packege_weight'],'quantity'=>$postArray['product']['quantity'],'current_price'=>$postArray['product']['current_price'],'degree_or_quality'=>$postArray['product']['degree_or_quality'],'source'=>$postArray['product']['source'],'location'=>$postArray['product']['location'],'added_on'=>date('Y-m-d h:i:s'),'status'=>'t');
-            $added=$this->usersapi->add_product($data);
+            
+            
+                $data_img=array();
+                if(isset($postArray['image']['image1']) && $postArray['image']['image1']!='')
+                {
+                    $file_name="image_1_".$postArray['product']['title'].".png";
+                    $abs_path="public/images/product_images/".$file_name;
+
+                    file_put_contents($abs_path, base64_decode($postArray['image']['image1']));
+                    $data['image1']=$file_name;
+                    // $this->usersapi->save_image($file_name,$added); 
+                }
+                if(isset($postArray['image']['image2']) && $postArray['image']['image2']!='')
+                {
+                    echo "asdfasdf";die;
+                    $file_name="image_2_".$postArray['product']['title'].".png";
+                    $abs_path="public/images/product_images/".$file_name;
+
+                    file_put_contents($abs_path, base64_decode($postArray['image']['image2']));
+                    $data['image2']=$file_name;
+                    // $this->usersapi->save_image($file_name,$added); 
+                }
+                if(isset($postArray['image']['image3']) && $postArray['image']['image3']!='')
+                {
+                    $file_name="image_3_".$postArray['product']['title'].".png";
+                    $abs_path="public/images/product_images/".$file_name;
+
+                    file_put_contents($abs_path, base64_decode($postArray['image']['image3']));
+                    $data['image3']=$file_name;
+                    // $this->usersapi->save_image($file_name,$added); 
+                }
+                if(isset($postArray['image']['image4']) && $postArray['image']['image4']!='')
+                {
+                    $file_name="image_4_".$postArray['product']['title'].".png";
+                    $abs_path="public/images/product_images/".$file_name;
+                    $data['image4']=$file_name;
+                    file_put_contents($abs_path, base64_decode($postArray['image']['image4']));
+
+                    // $this->usersapi->save_image($file_name,$added); 
+                }
+                if(isset($postArray['image']['image5']) && $postArray['image']['image5']!='')
+                {
+                    $file_name="image_5_".$postArray['product']['title'].".png";
+                    $abs_path="public/images/product_images/".$file_name;
+
+                    file_put_contents($abs_path, base64_decode($postArray['image']['image5']));
+                     $data['image5']=$file_name;
+                    // $this->usersapi->save_image($file_name,$added); 
+                }
+
+                 
+                 
+                // if(!empty($postArray['image']))
+                // {
+                //     foreach($postArray['image'] as $img)
+                //     {   
+                //         $file_name="image_".$added.".png";
+                //         $abs_path="public/images/product_images/".$file_name;
+                        
+                //         // file_put_contents($abs_path, base64_decode($img));
+                        
+                //         $this->usersapi->save_image($file_name,$added); 
+                       
+                //     }
+                // }
+                $added=$this->usersapi->add_product($data);
             if($added)
             {
-
-                if(!empty($postArray['image']))
-                {
-                    foreach($postArray['image'] as $img)
-                    {   
-                        $file_name="image_".$added.".png";
-                        $abs_path="public/images/product_images/".$file_name;
-                        
-                        // file_put_contents($abs_path, base64_decode($img));
-                        
-                        $this->usersapi->save_image($file_name,$added); 
-                       
-                    }
-                }
+                
 
                 $response['response']['status']='Ok';
                 $response['response']['product_id']=$added;
                 $response['response']['message']='Product Added successfully';
+                
             }
             else
             {
@@ -196,6 +249,12 @@ class User extends REST_Controller {
             echo json_encode($response);
             exit();   
         } 
+    }
+
+
+    public function product_bid_get()
+    {
+
     }
 
 
