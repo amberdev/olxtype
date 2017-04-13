@@ -37,14 +37,15 @@ class User extends REST_Controller {
     }
 
 
-    public function user_register_get()
+    public function user_register_post()
     {
         // $postData='{"name":"dipanshu","password":"pwd","mobile":"9560020152"}';
         $postData = file_get_contents("php://input");
         $postArray=json_decode($postData,true); 
-        if($postArray['mobile']!='' && $postArray['name']!='' && $postArray['password']!='')
+ 
+	if($postArray['mobile']!='' && $postArray['name']!='' && $postArray['password']!='')
         {
-
+	
             if($this->usersapi->user_exists($postArray['mobile']))
             {
                 $response['response']['status']='Error';
@@ -70,7 +71,7 @@ class User extends REST_Controller {
     }
 
 
-    public function verify_otp_get()
+    public function verify_otp_post()
     {
         // $postData='{"otp":"7352","mobile":"9560020152"}';
         $postData = file_get_contents("php://input");
@@ -96,7 +97,7 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
-    public function login_get()
+    public function login_post()
     {
         // $postData='{"mobile":"9560020152","password":"pwd"}';
         $postData = file_get_contents("php://input");
@@ -123,7 +124,7 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
-    public function add_product_get()
+    public function add_product_post()
     {
         // $postData='{"product_type":"property","packege_type":"abc","packege_weight":"abc","quantity":"1","degree_or_quality":"qty","source":"src","location":"india"}';
         $postData = file_get_contents("php://input");
