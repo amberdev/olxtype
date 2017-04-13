@@ -124,7 +124,7 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
-    public function add_product_get()
+    public function add_product_post()
     {
 
 
