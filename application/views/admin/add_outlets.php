@@ -86,8 +86,9 @@ $(document).ready(function(){
     <td width="200px" >Status/Action</td>
     </tr>
 
-    <? if(!empty($all_prod)):
-      foreach($all_prod as $prod):?>
+    <? if(!empty($all_prod)){
+      foreach($all_prod as $prod){?>
+    
     <tr>
     <td width="200px"><?php echo $prod['id']?></td>
     <td width="200px"><?php echo $prod['title']?></td>
@@ -109,7 +110,7 @@ $(document).ready(function(){
 
     </td>
     </tr>
-  <?php endforeach; endif;?>
+  <?php }}?>
 
 
     </table>
