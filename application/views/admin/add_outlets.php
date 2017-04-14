@@ -86,7 +86,7 @@ $(document).ready(function(){
     <td width="200px" >Status/Action</td>
     </tr>
 
-    <? if(!empty($all_prod)){
+    <?php if(!empty($all_prod)){
       foreach($all_prod as $prod){?>
     
     <tr>
