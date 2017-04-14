@@ -98,7 +98,7 @@ input[type=submit]{cursor:pointer;}
     -webkit-transform:translate(-50%,-50%); 
     transform: translate(-50%,-50%);
 }
-.leftmenu ul li{}
+.leftmenu ul li{color: white;}
 .leftmenu ul li a{
     text-transform:uppercase; 
     line-height:40px; 
