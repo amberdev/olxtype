@@ -87,7 +87,7 @@ input[type=submit]{cursor:pointer;}
 /* login box ends here */
 
 /* leftmenu starts here */
-.leftmenu{width:162px; height:100%; display:table; background:#fbab1e; float:left;}
+.leftmenu{width:162px; height:100%; display:table; background:#d50124; float:left;}
 .leftmenu ul{
     position:absolute;
     width:100%;
