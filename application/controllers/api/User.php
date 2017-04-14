@@ -144,7 +144,7 @@ class User extends REST_Controller {
             
             $data=array('title'=>$postArray['product']['title'],'product_type'=>$postArray['product']['product_type'],'packege_type'=>$postArray['product']['packege_type'],'packege_weight'=>$postArray['product']['packege_weight'],'quantity'=>$postArray['product']['quantity'],'current_price'=>$postArray['product']['current_price'],'degree_or_quality'=>$postArray['product']['degree_or_quality'],'source'=>$postArray['product']['source'],'location'=>$postArray['product']['location'],'added_on'=>date('Y-m-d h:i:s'),'status'=>'t','closed_bid'=>$postArray['product']['closed_bid']);
             
-            
+                
                 $data_img=array();
                 if(isset($postArray['image']['image1']) && $postArray['image']['image1']!='')
                 {
@@ -238,9 +238,17 @@ class User extends REST_Controller {
     function all_products_get()
     {
         if(!empty($this->usersapi->all_products()))
-        {
+        {  
+            foreach($this->usersapi->all_products() as $rm)
+            {
+                if($rm['remaing_time']!='no')
+                {
+                    $new_program[]=$rm;
+                }
+            } 
+            
             $response['response']['status']='Ok';
-            $response['response']['data']=$this->usersapi->all_products();
+            $response['response']['data']=$new_program;
             echo json_encode($response);
             exit();    
         }
