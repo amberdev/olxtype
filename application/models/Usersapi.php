@@ -117,8 +117,9 @@ class Usersapi extends CI_Model
 
 	function all_products()
 	{
-		$this->db->where('status','t');
-		$q=$this->db->get('tbl_products');
+
+		$q=$this->db->query('select distinct(p.id), (select count(b.product_id) from tbl_bid b  where b.product_id=p.id group by b.product_id)as total_bids,p.* from tbl_products p inner join tbl_bid b where p.status="t"');
+ 
 		if($q->num_rows()>0)
 		{
 			return $q->result_array();
@@ -144,7 +145,7 @@ class Usersapi extends CI_Model
 
 	function remaing($product_id)
 	{
-		$q=$this->db->query("select closed_bid from tbl_products where id='".$product_id."'");
+		$q=$this->db->query("select closed_bid,current_price from tbl_products where id='".$product_id."'");
 		 
 		if($q->num_rows()>0)
 		{

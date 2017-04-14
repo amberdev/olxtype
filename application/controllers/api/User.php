@@ -157,7 +157,7 @@ class User extends REST_Controller {
                 }
                 if(isset($postArray['image']['image2']) && $postArray['image']['image2']!='')
                 {
-                    echo "asdfasdf";die;
+                   
                     $file_name="image_2_".$postArray['product']['title'].".png";
                     $abs_path="public/images/product_images/".$file_name;
 
@@ -299,6 +299,7 @@ class User extends REST_Controller {
             $response['data']['max_bid']=$data[0]['max_amount'];
             $response['data']['min_bid']=$data[0]['min_amount'];
             $response['data']['remaing_time']=$remaing[0]['closed_bid'];
+            $response['data']['current_price']=$remaing[0]['current_price'];
 
         }
         else
