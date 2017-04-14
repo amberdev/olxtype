@@ -40,10 +40,10 @@ class Admin extends CI_Model
 		$this->db->insert('tbl_story',$data);
 	}
 
-	function all_outlets()
+	function get_all_products()
 	{
 		$this->db->select('*');
-		$q=$this->db->get('tbl_outlets');
+		$q=$this->db->get('tbl_products');
 		if($q->num_rows()>0)
 		{
 			return $q->result_array();
@@ -63,6 +63,16 @@ class Admin extends CI_Model
 		else
 		{
 			$this->db->insert('tbl_pins',$data);	
+		}
+	}
+
+	function update_prod($id)
+	{
+		if($id!='')
+		{
+			$data=array('status'=>'t');
+			$this->db->where('id',$id);
+			$this->db->update('tbl_products',$data);
 		}
 	}
 }

@@ -22,7 +22,7 @@
 
     <form name="admin_login" action="<?php echo base_url();?>admin/welcome/login" method="post">
 
-        <h1>pincare <b>admin</b></h1>
+        <h1><b>admin</b></h1>
         <div class="clear space30"></div>
         <div class="input-box">
             <input type="text" name="username" value="" placeholder="id..." class="input">

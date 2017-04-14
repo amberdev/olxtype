@@ -25,8 +25,15 @@ class Dashboard extends CI_Controller {
 	}
 	public function index()
 	{
-		
-		$this->load->view('admin/add_outlets');
+		$data['all_prod']=$this->admin->get_all_products();
+		$this->load->view('admin/add_outlets',$data);
+	}
+
+	public function update()
+	{
+		$id=$this->uri->segment(4);
+		$this->admin->update_prod($id);
+		redirect('admin/dashboard');
 	}
 
 

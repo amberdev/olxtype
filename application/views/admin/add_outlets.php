@@ -64,8 +64,8 @@ $(document).ready(function(){
 <div class="leftmenu">
     
     <ul>
-        <li><a href="<?php echo base_url();?>admin/dashboard/add_outlets" class="active">Add Outlet</a></li>
-        <li><a href="<?php echo base_url();?>admin/dashboard/add_story">Add Story</a></li>
+        <li>Un-approved Products</li>
+        
     </ul>
     
 </div>  
@@ -74,54 +74,45 @@ $(document).ready(function(){
 <!-- right container starts here -->
 <div class="right-container">
 <div class="form-container">
-    <form name="add_outlet" method="post" enctype="multipart/form-data" action="<?php echo base_url();?>admin/dashboard/add_outlets">
-        <div class="input-box">
-            <input type="text" name="outlet_id" value="" placeholder="Outlet Id(username).." class="input">
-        </div>
-        <div class="input-box">
-            <input type="password" name="password" value="" placeholder="Password.." class="input">
-        </div>
-        <div class="input-box">
-            <input type="text" name="outlet_name" value="" placeholder="Outlet Name" class="input">
-        </div>
-        <div class="input-box">
-            <input type="text" name="address" value="" placeholder="Address" class="input">
-        </div>
+    <table border="1" width="1200">
+    <tr>
+    <td width="200px">Product ID</td>
+    <td width="200px">Product Title</td>
+    <td width="200px">Image 1</td>
+    <td width="200px">Image 2</td>
+    <td width="200px">Image 3</td>
+    <td width="200px">Image 4</td>
+    <td width="200px">Image 5</td>
+    <td width="200px" >Status/Action</td>
+    </tr>
 
-        <div class="input-box">
-            <input type="text" name="city" value="" placeholder="City" class="input">
-        </div>
+    <? if(!empty($all_prod)):
+      foreach($all_prod as $prod):?>
+    <tr>
+    <td width="200px"><?php echo $prod['id']?></td>
+    <td width="200px"><?php echo $prod['title']?></td>
+    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image1']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image1']?>"></a></td>
+    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image2']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image2']?>"></a></td>
+    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image3']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image3']?>"></a></td>
+    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image4']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image4']?>"></a></td>
+    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image5']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image5']?>"></a></td>
+    <td width="200px" >
+    <?php if($prod['status']=='t')
+    {
+      echo "Approved";
+    }
+    else
+    {?>
+       <a href="<?php echo base_url();?>admin/dashboard/update/<?php echo $prod['id'];?>"><input type="button" name="Update" value="update" ></a>
+    <?php }?>
+    
 
-        <div class="input-box">
-            <input type="text" name="zip" value="" placeholder="Zip" class="input">
-        </div>
+    </td>
+    </tr>
+  <?php endforeach; endif;?>
 
-        <div class="input-box">
-            <input type="text" name="country" value="" placeholder="Country" class="input">
-        </div>
 
-        <div class="input-box">
-            <input type="text" name="logni" value="" placeholder="Longitude" class="input">
-        </div>
-
-        <div class="input-box">
-            <input type="text" name="lati" value="" placeholder="Latitude" class="input">
-        </div>
-
-         <div class="input-box">
-            <input type="text" name="search_params" value="" placeholder="Search Within" class="input">
-        </div>
-
-        <div class="input-box">
-            <input type="text" name="fb_page_id" value="" placeholder="FB Page ID" class="input">
-        </div>
-        
-        <div class="clear space30"></div>
-        
-        <input type="file" class="button" name="logo"> 
-        <div class="clear space30"></div>
-        <input type="submit" name="submit" value="DONE" class="button">
-    </form>
+    </table>
 </div>    
 </div>    
 <!-- right container ends here -->    
