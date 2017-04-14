@@ -74,9 +74,9 @@ $(document).ready(function(){
 <!-- right container starts here -->
 <div class="right-container">
 <div class="form-container">
-    <table border="1" width="1200">
+    <table border="1" width="1000">
     <tr>
-    <td width="200px">Product ID</td>
+    
     <td width="200px">Product Title</td>
     <td width="200px">Image 1</td>
     <td width="200px">Image 2</td>
@@ -90,13 +90,41 @@ $(document).ready(function(){
       foreach($all_prod as $prod){?>
     
     <tr>
-    <td width="200px"><?php echo $prod['id']?></td>
+     
     <td width="200px"><?php echo $prod['title']?></td>
-    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image1']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image1']?>"></a></td>
-    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image2']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image2']?>"></a></td>
-    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image3']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image3']?>"></a></td>
-    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image4']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image4']?>"></a></td>
-    <td width="200px"><a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image5']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image5']?>"></a></td>
+    
+    <td width="200px">
+    <?php if(isset($prod['image1']) && $prod['image1']!='' ):?>
+    <a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image1']?>" target="_blank">
+    <img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image1']?>">
+    </a>
+    <?php endif;?>
+    </td>
+
+    <td width="200px">
+       <?php if(isset($prod['image2']) && $prod['image2']!='' ):?>
+    <a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image2']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image2']?>"></a>
+     <?php endif;?>
+    </td>
+
+    <td width="200px">
+       <?php if(isset($prod['image3']) && $prod['image3']!='' ):?>
+    <a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image3']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image3']?>"></a>
+    <?php endif;?>
+    </td>
+
+    <td width="200px">
+      <?php if(isset($prod['image4']) && $prod['image4']!='' ):?>
+    <a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image4']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image4']?>"></a>
+     <?php endif;?>
+    </td>
+
+    <td width="200px">
+    <?php if(isset($prod['image5']) && $prod['image5']!='' ):?>
+    <a href="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image5']?>" target="_blank"><img src="<?php echo base_url();?>public/images/product_images/<?php echo $prod['image5']?>"></a>
+       <?php endif;?>
+    </td>
+
     <td width="200px" >
     <?php if($prod['status']=='t')
     {
