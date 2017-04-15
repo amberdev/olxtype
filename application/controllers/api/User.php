@@ -243,6 +243,10 @@ class User extends REST_Controller {
             {
                 if($rm['remaing_time']!='no')
                 {
+                    if($rm['total_bids']=="")
+                    {
+                        $rm['total_bids']='';   
+                    }
                     $new_program[]=$rm;
                 }
             } 
@@ -290,10 +294,10 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
-    public function product_bid_details_post()
+    public function product_bid_details_get()
     {
-        // $postData='{"product_id":"42"}';
-        $postData = file_get_contents("php://input");
+        $postData='{"product_id":"36"}';
+        // $postData = file_get_contents("php://input");
         $postArray=json_decode($postData,true); 
         if($postArray['product_id']!='')
         {
@@ -301,6 +305,15 @@ class User extends REST_Controller {
             
             $remaing=$this->usersapi->remaing($postArray['product_id']);
             
+            if($data[0]['max_amount']=='')
+            {
+                $data[0]['max_amount']='';
+            }
+
+            if($data[0]['min_amount']=='')
+            {
+                $data[0]['min_amount']='';
+            }
             
             $response['response']['status']='Ok';
             $response['response']['message']='Success';
