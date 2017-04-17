@@ -239,6 +239,9 @@ class User extends REST_Controller {
     {
         if(!empty($this->usersapi->all_products()))
         {  
+
+            
+            $count=0;
             foreach($this->usersapi->all_products() as $rm)
             {
                 if($rm['remaing_time']!='no')
@@ -249,10 +252,24 @@ class User extends REST_Controller {
                     }
                     $new_program[]=$rm;
                 }
+                else
+                {
+                    $count+=1;
+                }
             } 
             
+            if(count($this->usersapi->all_products())==$count)
+            {
+               $response['response']['message']='No active products available!';
+            }
+            else
+            {
+                $response['response']['data']=$new_program;
+            }
+             
+
             $response['response']['status']='Ok';
-            $response['response']['data']=$new_program;
+            
             echo json_encode($response);
             exit();    
         }
