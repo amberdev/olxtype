@@ -301,18 +301,28 @@ class User extends REST_Controller {
         $postArray=json_decode($postData,true); 
         if($postArray['product_id']!='' && $postArray['bid_amount']!='' && $postArray['user_id'])
         {
-            $data=array('product_id'=>$postArray['product_id'],'bid_amount'=>$postArray['bid_amount'],'user_id'=>$postArray['user_id'],'created_on'=>date('Y-m-d h:i:s'));
 
-            if($this->usersapi->post_bid($data))
+            if($postArray['bid_amount']>=5)
             {
-                $response['response']['status']='ok';
-                $response['response']['message']='Your bid has been submitted';
+                $data=array('product_id'=>$postArray['product_id'],'bid_amount'=>$postArray['bid_amount'],'user_id'=>$postArray['user_id'],'created_on'=>date('Y-m-d h:i:s'));
+
+                if($this->usersapi->post_bid($data))
+                {
+                    $response['response']['status']='ok';
+                    $response['response']['message']='Your bid has been submitted';
+                }
+                else
+                {
+                    $response['response']['status']='Error';
+                    $response['response']['message']='Somthing Went Wrong';
+                }
             }
             else
             {
                 $response['response']['status']='Error';
-                $response['response']['message']='Somthing Went Wrong';
+                $response['response']['message']='Bid cost shoud be equal or more then 5';
             }
+            
         }
         else
         {
