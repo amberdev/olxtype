@@ -250,6 +250,17 @@ class User extends REST_Controller {
                     {
                         $rm['total_bids']='';   
                     }
+
+                    if($rm['current_bid_price']=="")
+                    {
+                        $rm['current_bid_price']='';   
+                    }
+
+                    if($rm['min_bid']=="")
+                    {
+                        $rm['min_bid']='';   
+                    }
+
                     $new_program[]=$rm;
                 }
                 else
