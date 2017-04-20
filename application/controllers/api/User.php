@@ -142,7 +142,7 @@ class User extends REST_Controller {
         if($postArray['product']['product_type']!='')
         {
             
-            $data=array('title'=>$postArray['product']['title'],'product_type'=>$postArray['product']['product_type'],'packege_type'=>$postArray['product']['packege_type'],'packege_weight'=>$postArray['product']['packege_weight'],'quantity'=>$postArray['product']['quantity'],'current_price'=>$postArray['product']['current_price'],'degree_or_quality'=>$postArray['product']['degree_or_quality'],'source'=>$postArray['product']['source'],'location'=>$postArray['product']['location'],'added_on'=>date('Y-m-d h:i:s'),'status'=>'t','closed_bid'=>$postArray['product']['closed_bid'],'product_desc'=>$postArray['product']['product_desc']);
+            $data=array('title'=>$postArray['product']['title'],'weight'=>$postArray['product']['weight'],'product_type'=>$postArray['product']['product_type'],'packege_type'=>$postArray['product']['packege_type'],'packege_weight'=>$postArray['product']['packege_weight'],'quantity'=>$postArray['product']['quantity'],'current_price'=>$postArray['product']['current_price'],'degree_or_quality'=>$postArray['product']['degree_or_quality'],'source'=>$postArray['product']['source'],'location'=>$postArray['product']['location'],'added_on'=>date('Y-m-d h:i:s'),'status'=>'t','closed_bid'=>$postArray['product']['closed_bid'],'product_desc'=>$postArray['product']['product_desc']);
             
                 
                 $data_img=array();
@@ -311,10 +311,10 @@ class User extends REST_Controller {
         echo json_encode($response);
     }
 
-    public function product_bid_details_get()
+    public function product_bid_details_post()
     {
-        $postData='{"product_id":"36"}';
-        // $postData = file_get_contents("php://input");
+        //$postData='{"product_id":"36"}';
+         $postData = file_get_contents("php://input");
         $postArray=json_decode($postData,true); 
         if($postArray['product_id']!='')
         {
