@@ -287,7 +287,7 @@ class User extends REST_Controller {
         else
         {
             $response['response']['status']='Error';
-            $response['response']['message']='Somthing went wrong, Try again';
+            $response['response']['message']='No product found!!';
             echo json_encode($response);
             exit();   
         } 
