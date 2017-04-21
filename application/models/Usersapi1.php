@@ -122,8 +122,9 @@ class Usersapi extends CI_Model
 	function all_products()
 	{
 
-		$q=$this->db->query('select distinct(p.id), IF(DATEDIFF(closed_bid,CURDATE())>=1,DATEDIFF(closed_bid,CURDATE()),"no")as remaing_time, 
-
+		//$q=$this->db->query('select distinct(p.id), IF(DATEDIFF(closed_bid,CURDATE())>=1,DATEDIFF(closed_bid,CURDATE()),"no")as remaing_time, 
+$q=$this->db->query(''select distinct(p.id),IF(DATEDIFF(closed_bid,CURDATE())>=1,DATEDIFF(closed_bid,CURDATE()),"no")as remaing_time,(select count(b.product_id) from tbl_bid b where b.product_id=p.id group by b.product_id)as total_bids,(select sum(b.bid_amount) from tbl_bid b where b.product_id=p.id
+group by b.product_id)as current_bid_price,(select min(b.bid_amount) from tbl_bid b where b.product_id=p.id group by b.product_id)as min_bid,(select b.bid_amount from tbl_bid b where b.id = (select max(b2.id) from tbl_bid b2 where b2.product_id=p.id)) as current_last_bid,p.* from tbl_products p inner join tbl_bid b where p.status="t"'');
 (select count(b.product_id) from tbl_bid b where b.product_id=p.id
 
 group by b.product_id)as total_bids,
@@ -136,9 +137,6 @@ group by b.product_id)as current_bid_price,
 (select min(b.bid_amount) from tbl_bid b where b.product_id=p.id
 
 group by b.product_id)as min_bid,
-
-
-(select b.bid_amount from tbl_bid b where b.id = (select max(b2.id) from tbl_bid b2 where b2.product_id=p.id)) as current_last_bid,
 
 p.* from tbl_products p 
 
