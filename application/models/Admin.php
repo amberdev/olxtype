@@ -30,6 +30,16 @@ class Admin extends CI_Model
 		}
 	}
 
+	function get_all_prod_ind($id)
+	{
+		$this->db->where('id',$id);
+		$q=$this->db->get('tbl_products');
+		if($q->num_rows()>0)
+		{
+			return $q->result_array();
+		}
+	}
+
 	function add_outlets($data)
 	{
 		$this->db->insert('tbl_outlets',$data);

@@ -26,7 +26,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data['all_prod']=$this->admin->get_all_products();
-		$this->load->view('admin/add_outlets',$data);
+		$this->load->view('admin/prod_list',$data);
 	}
 
 	public function update()
@@ -34,6 +34,25 @@ class Dashboard extends CI_Controller {
 		$id=$this->uri->segment(4);
 		$this->admin->update_prod($id);
 		redirect('admin/dashboard');
+	}
+
+
+	public function full_view($id)
+	{
+		if(isset($id))
+		{
+			if(is_numeric($id))
+			{
+				$data['prod']=$this->admin->get_all_prod_ind($id);
+				$this->load->view('admin/full_view',$data);
+
+			}
+			else
+			{
+				redirect('admin/dashboard');
+			}
+			
+		}
 	}
 
 
